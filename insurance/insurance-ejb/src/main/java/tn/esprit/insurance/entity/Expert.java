@@ -1,7 +1,6 @@
 package tn.esprit.insurance.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,65 +8,75 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name ="t_expert")
     public class Expert implements Serializable 
     {
 
 	private static final long serialVersionUID = 1L;
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	private int expertCode;
 	
-	int Expert_Code;
-	String Exp_Lastname;
-	String Exp_FirstName;
-	long Exp_Phone;
+	private String expLastname;
 	
-	@OneToMany(cascade = CascadeType.ALL) 
-	private Set<Sinister> Sinisters;
+	private String expFirstName;
 	
-//	@OneToOne
-//	private Expert_Report  expert_report ;
-
+	private long expPhone;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="expert") 
+	private Set<ExpertReport> reports;
+	
 	public Expert() 
 	{
 	}
 
-	public int getExpert_code() {
-		return Expert_Code;
+	public int getExpertCode() {
+		return expertCode;
 	}
 
-	public void setExpert_code(int code) {
-		this.Expert_Code = code;
+	public void setExpertCode(int expertCode) {
+		this.expertCode = expertCode;
 	}
 
-	public String getExpertLastname() {
-		return Exp_Lastname;
+	public String getExpLastname() {
+		return expLastname;
 	}
 
-	public void setExpertLastname(String LName) {
-		this.Exp_Lastname = LName;
+	public void setExpLastname(String expLastname) {
+		this.expLastname = expLastname;
 	}
 
-	public String getExpertFirstname() {
-		return Exp_FirstName;
+	public String getExpFirstName() {
+		return expFirstName;
 	}
 
-	public void setExpertFirstname(String FName) {
-		this.Exp_FirstName = FName
-				;
-	}
-	
-
-	public long getExp_phone() {
-		return Exp_Phone;
+	public void setExpFirstName(String expFirstName) {
+		this.expFirstName = expFirstName;
 	}
 
-	public void setExpertPhone(long phone) {
-		this.Exp_Phone = phone;
-			
+	public long getExpPhone() {
+		return expPhone;
 	}
+
+	public void setExpPhone(long expPhone) {
+		this.expPhone = expPhone;
+	}
+
+	public Set<ExpertReport> getReports() {
+		return reports;
+	}
+
+	public void setReports(Set<ExpertReport> reports) {
+		this.reports = reports;
+	}
+
+
+
+
 	
 	
 }

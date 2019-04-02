@@ -1,77 +1,161 @@
 package tn.esprit.insurance.entity;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.Table;
-import javax.persistence.InheritanceType;
+import java.lang.Enum;
+import java.lang.String;
+import java.sql.Date;
+import java.util.Set;
 
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * Entity implementation class for Entity: User
+ *
+ */
 @Entity
-@Table(name="user")
-@Inheritance(strategy = InheritanceType.JOINED)
-
+@XmlRootElement
+@Table(name="t_user")
 public class User implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue( strategy = GenerationType.IDENTITY )
-	@Column(name="User_ID")
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name="first_name",nullable = false) 
-	private String firstName;
-	
-	@Column(name="last_name",nullable = false)
-	private String lastName;
-	
-	@Column(name="email",nullable = false)
-	private String email;
-	
-	@Column(name="phone",nullable = false,unique=true,length=8)
-	private int phone;
 
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy="User")
-//	private Set<Claim> claims;
+	@Column(name = "cin")
+	private long cin;
 
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy="Quotation")
-//	private Set<Quotation> quotations;
+	@Column(name = "date_driver_license")
+	private Date date_driver_license;
 
-	public User() {}
+	@Column(name = "expertise_domain")
+	private String expertise_domain;
+
+	@Column(name = "first_name")
+	private String first_name;
+
+	@Column(name = "last_name")
+	private String last_name;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "role")
+	private RoleType role;
+
+	@Column(name = "password")
+	private String password;
+
+	@Column(name = "email")
+	private int email;
+
+	@Column(name = "adress")
+	private String adress;
+
+	@Column(name = "state")
+	private String state;
 	
-	public int getId() {
-		return id;
+	@Column(name = "seniority")
+	private boolean seniority ;
+
+	@OneToMany(mappedBy="client", fetch = FetchType.EAGER)
+	private Set<Contract> contracts;
+
+	public String getAdress() {
+		return adress;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", cin=" + cin + ", first_name=" + first_name + ", last_name=" + last_name + ", role="
+				+ role + ", password=" + password + ", email=" + email + ", adress=" + adress + ", state=" + state
+				+ "]";
+	}
+
+	public User(int id, long cin, String first_name, String last_name, RoleType role, String password, int email,
+			String adress, String state) {
+		super();
+		this.id = id;
+		this.cin = cin;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.role = role;
+		this.password = password;
+		this.email = email;
+		this.adress = adress;
+		this.state = state;
+	}
+
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getEmail() {
+		return email;
+	}
+
+	public void setEmail(int email) {
+		this.email = email;
+	}
+
+	private static final long serialVersionUID = 1L;
+
+	public User() {
+		super();
+	}
+
+	public int getId() {
+		return this.id;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getFirstName() {
-		return firstName;
+
+	public long getCin() {
+		return this.cin;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+
+	public void setCin(long cin) {
+		this.cin = cin;
 	}
-	public String getLastName() {
-		return lastName;
+
+	public String getFirst_name() {
+		return this.first_name;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
 	}
-	public String getEmail() {
-		return email;
+
+	public String getLast_name() {
+		return this.last_name;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
 	}
-	public int getPhone() {
-		return phone;
+
+	public RoleType getRole() {
+		return this.role;
 	}
-	public void setPhone(int phone) {
-		this.phone = phone;
+
+	public void setRole(RoleType role) {
+		this.role = role;
 	}
 
 }

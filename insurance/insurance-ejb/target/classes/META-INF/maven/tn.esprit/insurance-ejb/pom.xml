@@ -9,8 +9,6 @@
 	<artifactId>insurance-ejb</artifactId>
 	<packaging>ejb</packaging>
 
-
-
 	<dependencies>
 		<dependency>
 			<groupId>javax</groupId>
