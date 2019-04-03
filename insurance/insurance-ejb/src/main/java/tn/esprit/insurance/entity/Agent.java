@@ -27,7 +27,7 @@ public class Agent extends User implements Serializable {
 
 	public Agent(){}
 
-	public String getRole() {
+	public RoleType getRole() {
 		return role;
 	}
 
