@@ -1,24 +1,28 @@
 package tn.esprit.insurance.entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_contractdemand")
-public class ContractDemand {
+public class ContractDemand implements Serializable {
 	
 	@Id
 	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private int id;
 
-	@Column(name = "state_demand")
-	private boolean state_demand;
+
 
 
 	@Column(name = "date_debut")
@@ -36,16 +40,18 @@ public class ContractDemand {
 
 	@ManyToOne
 	private User user;
-
+	
 	@ManyToOne
-	private InsuranceProduct Product_insurance;
+	private InsuranceProduct product_insurance;
+	
+	
 
 	public InsuranceProduct getProduct_insurance() {
-		return Product_insurance;
+		return product_insurance;
 	}
 
 	public void setProduct_insurance(InsuranceProduct Product_insurance) {
-		this.Product_insurance = Product_insurance;
+		this.product_insurance = Product_insurance;
 	}
 
 	public User getClient() {
@@ -100,13 +106,7 @@ public class ContractDemand {
 		this.date_fin = date_fin;
 	}
 
-	public boolean isState_demand() {
-		return state_demand;
-	}
 
-	public void setState_demand(boolean state_demand) {
-		this.state_demand = state_demand;
-	}
 
 	public User getUser() {
 		return user;
@@ -116,17 +116,23 @@ public class ContractDemand {
 		this.user = user;
 	}
 
-	public ContractDemand(int id, boolean state_demand, Date date_debut, int duration, Date date_fin,
+	public ContractDemand(int id,  Date date_debut, int duration, Date date_fin,
 			SplittingType spliting, User user, InsuranceProduct Product_insurance) {
 	
 		this.id = id;
-		this.state_demand = state_demand;
 		this.date_debut = date_debut;
 		this.duration = duration;
 		this.date_fin = date_fin;
 		this.spliting = spliting;
 		this.user = user;
-		this.Product_insurance = Product_insurance;
+		this.product_insurance = Product_insurance;
+	}
+
+	@Override
+	public String toString() {
+		return "ContractDemand [id=" + id + ", date_debut=" + date_debut
+				+ ", duration=" + duration + ", date_fin=" + date_fin + ", spliting=" + spliting + ", user=" + user
+				+ ", product_insurance=" + product_insurance + "]";
 	}
 
 

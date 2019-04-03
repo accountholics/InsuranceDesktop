@@ -1,6 +1,7 @@
 package tn.esprit.insurance.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -16,15 +17,23 @@ public class InsuranceProduct implements Serializable {
 	   
 	@Id
     @Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private int id;
 	
-	@Enumerated(EnumType.STRING)
-	private ProductType type;
+
 	private static final long serialVersionUID = 1L;
 
 	@OneToMany(fetch= FetchType.EAGER, mappedBy="product_insurance")
-	private Set<Contract> contracts;
+	private List<Contract> contracts;
 	
+	
+	public List<Contract> getContracts() {
+		return contracts;
+	}
+	public void setContracts(List<Contract> contracts) {
+		this.contracts = contracts;
+	}
 	public InsuranceProduct() {
 		super();
 	}   
@@ -35,12 +44,6 @@ public class InsuranceProduct implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}   
-	public ProductType getType() {
-		return this.type;
-	}
 
-	public void setType(ProductType type) {
-		this.type = type;
-	}
    
 }

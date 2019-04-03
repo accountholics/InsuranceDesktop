@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.lang.Enum;
 import java.lang.String;
 import java.sql.Date;
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -18,8 +20,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name="t_user")
 public class User implements Serializable {
 
+
+
 	@Id
 	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private int id;
 
 	@Column(name = "cin")
@@ -45,7 +51,7 @@ public class User implements Serializable {
 	private String password;
 
 	@Column(name = "email")
-	private int email;
+	private String email;
 
 	@Column(name = "adress")
 	private String adress;
@@ -53,11 +59,54 @@ public class User implements Serializable {
 	@Column(name = "state")
 	private String state;
 	
-	@Column(name = "seniority")
-	private boolean seniority ;
+
 
 	@OneToMany(mappedBy="client", fetch = FetchType.EAGER)
 	private Set<Contract> contracts;
+	
+	
+	@OneToMany(mappedBy="user", fetch = FetchType.EAGER)
+	private List<ContractDemand> contractDemands;
+	
+	
+
+	public Date getDate_driver_license() {
+		return date_driver_license;
+	}
+
+	public void setDate_driver_license(Date date_driver_license) {
+		this.date_driver_license = date_driver_license;
+	}
+
+	public String getExpertise_domain() {
+		return expertise_domain;
+	}
+
+	public void setExpertise_domain(String expertise_domain) {
+		this.expertise_domain = expertise_domain;
+	}
+
+
+
+	public Set<Contract> getContracts() {
+		return contracts;
+	}
+
+	public void setContracts(Set<Contract> contracts) {
+		this.contracts = contracts;
+	}
+
+	public List<ContractDemand> getDemandsContract() {
+		return contractDemands;
+	}
+
+	public void setDemandsContract(List<ContractDemand> demandsContract) {
+		this.contractDemands = demandsContract;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	public String getAdress() {
 		return adress;
@@ -70,7 +119,7 @@ public class User implements Serializable {
 				+ "]";
 	}
 
-	public User(int id, long cin, String first_name, String last_name, RoleType role, String password, int email,
+	public User(int id, long cin, String first_name, String last_name, RoleType role, String password, String email,
 			String adress, String state) {
 		super();
 		this.id = id;
@@ -104,11 +153,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public int getEmail() {
+	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(int email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
