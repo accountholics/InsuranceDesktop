@@ -11,9 +11,11 @@ import javax.persistence.*;
 @Entity
 @Table(name="t_contract")
 public class Contract implements Serializable {
-
+ 
+	
 	@Id
 	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@Column(name = "seniority")
