@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -25,9 +26,16 @@ public class Sinister implements Serializable {
 		
 		private String sinisterDescription;
 		
-		private int contractNumber;
+		@ManyToOne
+		private Contract contract;
 		
 		private Date declarationDate;
+		
+		private Date responseDate;
+		
+		private SinisterState sinisterState;
+		
+		private String observation;
 		
 		@OneToMany(cascade = CascadeType.ALL, mappedBy="sinister")
 		private Set<Justification> justifications;
@@ -39,10 +47,41 @@ public class Sinister implements Serializable {
 		private ExpertReport expertReport;
 		
 		@OneToOne
+		private Expert expert;
+		
+		@OneToOne
 		private FinalReport finalReport;
+		
+		@OneToOne
+		private Assessment assessment;		
 		
 		public Sinister() 
 		{
+		}
+		
+		
+		public Date getResponseDate() {
+			return responseDate;
+		}
+
+		public void setResponseDate(Date responseDate) {
+			this.responseDate = responseDate;
+		}
+
+		public String getObservation() {
+			return observation;
+		}
+
+		public void setObservation(String observation) {
+			this.observation = observation;
+		}
+		
+		public Assessment getAssessment() {
+			return assessment;
+		}
+
+		public void setAssessment(Assessment assessment) {
+			this.assessment = assessment;
 		}
 
 		public int getSinisterId() {
@@ -61,12 +100,12 @@ public class Sinister implements Serializable {
 			this.sinisterDescription = sinisterDescription;
 		}
 
-		public int getContractNumber() {
-			return contractNumber;
+		public Contract getContract() {
+			return contract;
 		}
 
-		public void setContractNumber(int contractNumber) {
-			this.contractNumber = contractNumber;
+		public void setContract(Contract contract) {
+			this.contract = contract;
 		}
 
 		public Date getDeclarationDate() {
@@ -105,8 +144,26 @@ public class Sinister implements Serializable {
 			return finalReport;
 		}
 
+		public Expert getExpert() {
+			return expert;
+		}
+
+
+		public void setExpert(Expert expert) {
+			this.expert = expert;
+		}
+
+
 		public void setFinalReport(FinalReport finalReport) {
 			this.finalReport = finalReport;
+		}
+
+		public SinisterState getSinisterState() {
+			return sinisterState;
+		}
+
+		public void setSinisterState(SinisterState sinisterState) {
+			this.sinisterState = sinisterState;
 		}
 		
 		

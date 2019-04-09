@@ -11,7 +11,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name="Claims")
+@Table(name="t_claims")
 public class Claims implements Serializable {
 
 	

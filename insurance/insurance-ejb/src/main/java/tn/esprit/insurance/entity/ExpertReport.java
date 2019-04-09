@@ -24,10 +24,20 @@ public class ExpertReport implements Serializable {
 	
 	private String topic;
 	
+	private String observation;
+	
+	public String getObservation() {
+		return observation;
+	}
+
+	public void setObservation(String observation) {
+		this.observation = observation;
+	}
+
 	@ManyToOne
 	private Expert expert;
 	
-	@OneToOne
+	@OneToOne(mappedBy ="expertReport")
 	private Sinister sinister;
 	
 

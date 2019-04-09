@@ -27,8 +27,29 @@ import javax.persistence.Table;
 	
 	private long expPhone;
 	
+	private Disponible disponible;
+	
+	public Disponible getDisponible() {
+		return disponible;
+	}
+
+	public void setDisponible(Disponible disponible) {
+		this.disponible = disponible;
+	}
+
+	public Set<Sinister> getSinisters() {
+		return sinisters;
+	}
+
+	public void setSinisters(Set<Sinister> sinisters) {
+		this.sinisters = sinisters;
+	}
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="expert") 
 	private Set<ExpertReport> reports;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="expert")
+	private Set<Sinister> sinisters;
 	
 	public Expert() 
 	{

@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="t_nolifeinsurance")
+@Table(name="t_nolifeproduct")
 public class NoLifeProduct extends InsuranceProduct{
 	@Column(name = "security_measure")
 	private float security_measure;

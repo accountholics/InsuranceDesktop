@@ -20,7 +20,7 @@ public class Assessment implements Serializable {
 	
 	private float value;
 	
-	@OneToOne
+	@OneToOne(mappedBy ="assessment")
 	private Sinister sinister;
 	
 	@OneToOne

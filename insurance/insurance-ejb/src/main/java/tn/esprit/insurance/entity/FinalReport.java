@@ -23,7 +23,7 @@ public class FinalReport implements Serializable {
 	private String  decision;
 	
 
-	@OneToOne
+	@OneToOne(mappedBy="finalReport")
 	private Sinister sinister;
 	
 	public FinalReport() {

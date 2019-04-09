@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "premium")
+@Table(name = "t_premium")
 public class Premium implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

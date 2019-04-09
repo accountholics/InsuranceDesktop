@@ -2,6 +2,8 @@ package tn.esprit.insurance.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Set;
+
 import javax.persistence.*;
 
 /**
@@ -39,6 +41,11 @@ public class Contract implements Serializable {
 
 	@ManyToOne
 	private InsuranceProduct product_insurance ;
+	
+	@OneToMany (cascade = CascadeType.ALL, mappedBy="contract")
+	private Set<Sinister> sinisters;
+	
+
 	public InsuranceProduct getProduct_insurance() {
 		return product_insurance;
 	}
@@ -109,4 +116,13 @@ public class Contract implements Serializable {
 		this.date_fin = date_fin;
 	}
 
+	public Set<Sinister> getSinisters() {
+		return sinisters;
+	}
+
+	public void setSinisters(Set<Sinister> sinisters) {
+		this.sinisters = sinisters;
+	}
+
+	
 }
