@@ -1,7 +1,6 @@
 package tn.esprit.insurance.entity;
 
 import java.io.Serializable;
-import java.lang.Enum;
 import java.lang.String;
 import java.sql.Date;
 import java.util.Set;
