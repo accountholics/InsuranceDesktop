@@ -14,6 +14,7 @@
 			<groupId>tn.esprit</groupId>
 			<artifactId>insurance-web</artifactId>
 			<type>war</type>
+			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>tn.esprit</groupId>

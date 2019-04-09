@@ -2,10 +2,10 @@
     <wb-module deploy-name="insurance-ear">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
-        <dependent-module archiveName="insurance-web.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/tn/esprit/insurance-web/1.0/insurance-web-1.0.war">
+        <dependent-module archiveName="insurance-web.war" deploy-path="/" handle="module:/resource/insurance-web/insurance-web">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="insurance-ejb.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/tn/esprit/insurance-ejb/1.0/insurance-ejb-1.0.jar">
+        <dependent-module archiveName="insurance-ejb.jar" deploy-path="/" handle="module:/resource/insurance-ejb/insurance-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>
