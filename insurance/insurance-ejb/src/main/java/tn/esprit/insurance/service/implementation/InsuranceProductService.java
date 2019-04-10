@@ -61,9 +61,10 @@ public class InsuranceProductService implements InsuranceProductServiceRemote {
 
 	@Override
 	public List<InsuranceProduct> getAllProduct() {
-		List<InsuranceProduct> emp = em.createQuery("from InsuranceProduct", InsuranceProduct.class).getResultList();
+		List<InsuranceProduct> emp = em.createQuery("select c from InsuranceProduct c", InsuranceProduct.class).getResultList();
 		System.out.println(emp.size());
-		return emp;	}
+		return emp;	
+		}
 
 	public void updateProduct(InsuranceProduct product) {
 		InsuranceProduct p = em.find(InsuranceProduct.class, product.getId());
@@ -72,6 +73,13 @@ public class InsuranceProductService implements InsuranceProductServiceRemote {
 		p.setRatio_pure_premium(product.getRatio_pure_premium());
 		p.setRisk_measure(product.getRisk_measure());
 		p.setSecurity_measure(product.getSecurity_measure());		
+	}
+
+	@Override
+	public List<InsuranceProduct> getAllProductByName(String aaa) {
+		String sql = "select * from InsuranceProduct i where i.name like '"+aaa+"%'";
+		List<InsuranceProduct> emp = em.createQuery(sql, InsuranceProduct.class).getResultList();
+		return emp;	
 	}
 
 }

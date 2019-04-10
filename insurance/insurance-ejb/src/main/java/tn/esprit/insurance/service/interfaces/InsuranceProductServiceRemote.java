@@ -13,8 +13,10 @@ public interface InsuranceProductServiceRemote {
 	public void deleteInsuranceProductById(int InsuranceProductId);
 	public long getNombreProduitJPQL();
 	public List<String> getAllNoLifeProduitNamesJPQL();
+	
 	public void deleteAllInsuranceProductJPQL();
 	public List<InsuranceProduct> getAllProduct();
+	public List<InsuranceProduct> getAllProductByName(String aaa);
 	public void updateProduct(InsuranceProduct product); 
 
 }
