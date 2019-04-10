@@ -8,6 +8,7 @@ import javax.persistence.TypedQuery;
 
 import tn.esprit.insurance.entity.Expert;
 import tn.esprit.insurance.entity.ExpertReport;
+import tn.esprit.insurance.entity.Sinister;
 import tn.esprit.insurance.service.interfaces.IExpertReportLocal;
 import tn.esprit.insurance.service.interfaces.IExpertReportRemote;
 
@@ -38,6 +39,8 @@ public class ExpertReportService implements IExpertReportLocal, IExpertReportRem
 			ExpertReport s = em.find(ExpertReport.class, expertReportNewValues.getExpertReportId());
 			s.setObservation(expertReportNewValues.getObservation());
 			s.setTopic(expertReportNewValues.getTopic());	
+			s.setSinister(expertReportNewValues.getSinister());
+			s.setExpert(expertReportNewValues.getExpert());
 			System.out.println("Out of updateExpertReport : ");
 		}
 
@@ -62,6 +65,15 @@ public class ExpertReportService implements IExpertReportLocal, IExpertReportRem
 			System.out.println("ReportsByExpert ");
 			TypedQuery<ExpertReport> query = em.createQuery("SELECT u FROM ExpertReport u WHERE u.expert = :expert",ExpertReport.class);			
 			List<ExpertReport> reports = query.setParameter("expert", expert).getResultList();
+			System.out.println("SReportsByExpert done ");
+			return reports;
+		}
+		
+		@Override
+		public List<ExpertReport> findAllExpertReportsbySinister(Sinister expert) {
+			System.out.println("ReportsByExpert ");
+			TypedQuery<ExpertReport> query = em.createQuery("SELECT u FROM ExpertReport u WHERE u.sinister = :sinister",ExpertReport.class);			
+			List<ExpertReport> reports = query.setParameter("sinister", expert).getResultList();
 			System.out.println("SReportsByExpert done ");
 			return reports;
 		}

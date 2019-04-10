@@ -46,6 +46,7 @@ public class SinisterService implements ISinisterLocal, ISinisterRemote {
 		s.setItems(sinisterNewValues.getItems());
 		s.setJustifications(sinisterNewValues.getJustifications());
 		s.setExpert(sinisterNewValues.getExpert());
+		s.setTotalcost(sinisterNewValues.getTotalcost());
 		
 		System.out.println("Out of updateSinister : ");
 

@@ -38,6 +38,9 @@ public class ItemService implements IItemLocal, IItemRemote {
 		Item i = em.find(Item.class, itemNewValues.getItemId());
 		i.setPrice(itemNewValues.getPrice());
 		i.setDescription(itemNewValues.getDescription());	
+		i.setNumber(itemNewValues.getNumber());
+		i.setName(itemNewValues.getName());
+		i.setTotal(itemNewValues.getTotal());
 		System.out.println("Out of updateItem : ");
 
 	}

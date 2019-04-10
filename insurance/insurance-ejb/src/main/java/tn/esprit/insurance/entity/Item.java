@@ -18,10 +18,39 @@ public class Item implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int itemId;
 	
+	private String name;
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	private float price;
 	
 	private String description;
 	
+	private int number;
+	
+	private float total;
+	public int getNumber() {
+		return number;
+	}
+
+	public float getTotal() {
+		return total;
+	}
+
+	public void setTotal(float total) {
+		this.total = total;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
 	@OneToOne
 	private Sinister sinister;	
 

@@ -4,6 +4,7 @@ import java.util.List;
 import javax.ejb.Remote;
 import tn.esprit.insurance.entity.Expert;
 import tn.esprit.insurance.entity.ExpertReport;
+import tn.esprit.insurance.entity.Sinister;
 
 @Remote
 public interface IExpertReportRemote {
@@ -13,5 +14,5 @@ public interface IExpertReportRemote {
 	public ExpertReport findExpertReportById(int id);
 	public List<ExpertReport> findAllExpertReports();
 	public List<ExpertReport> findAllExpertReportsbyExpert(Expert expert);
-
+	public List<ExpertReport> findAllExpertReportsbySinister(Sinister expert);
 }

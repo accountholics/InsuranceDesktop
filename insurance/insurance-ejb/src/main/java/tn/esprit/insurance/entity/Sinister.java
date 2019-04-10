@@ -37,6 +37,17 @@ public class Sinister implements Serializable {
 		
 		private String observation;
 		
+		private float totalcost;
+		
+		public float getTotalcost() {
+			return totalcost;
+		}
+
+
+		public void setTotalcost(float totalcost) {
+			this.totalcost = totalcost;
+		}
+
 		@OneToMany(cascade = CascadeType.ALL, mappedBy="sinister")
 		private Set<Justification> justifications;
 
