@@ -94,9 +94,12 @@ public class SinisterService implements ISinisterLocal, ISinisterRemote {
 	@Override
 	public List<Sinister> findAllSinisterByExpert(Expert expert) {
 		System.out.println("SinisterByExpert ");
-		TypedQuery<Sinister> query = em.createQuery("SELECT u FROM Sinister u WHERE u.expert = :expert",Sinister.class);			
-		List<Sinister> users = query.setParameter("expert", expert).getResultList();
+		TypedQuery<Sinister> query = em.createQuery("SELECT u FROM Sinister u WHERE u.expert = :expert and u.sinisterState = :sinisterstate",Sinister.class);			
+
+		query.setParameter("expert", expert);
+		query.setParameter("sinisterstate", SinisterState.in_progress);
 		System.out.println("SinisterByExpert done ");
+		List<Sinister> users = query.getResultList();
 		return users;
 	}
 
