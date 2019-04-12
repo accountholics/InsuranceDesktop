@@ -18,4 +18,5 @@ public interface ISinisterRemote {
 	public List<Sinister> findAllSinistersDone();
 	public List<Sinister> findAllSinistersInProgress();
 	public List<Sinister> findAllSinisterByExpert(Expert expert);
+	public List<Sinister> getAllSinistersInProgressByProductName(String ff);
 }

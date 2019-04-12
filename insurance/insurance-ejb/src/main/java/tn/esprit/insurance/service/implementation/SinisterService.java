@@ -5,8 +5,14 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.Root;
 
+import tn.esprit.insurance.entity.Contract;
 import tn.esprit.insurance.entity.Expert;
+import tn.esprit.insurance.entity.InsuranceProduct;
 import tn.esprit.insurance.entity.Sinister;
 import tn.esprit.insurance.entity.SinisterState;
 import tn.esprit.insurance.service.interfaces.ISinisterLocal;
@@ -102,5 +108,20 @@ public class SinisterService implements ISinisterLocal, ISinisterRemote {
 		List<Sinister> users = query.getResultList();
 		return users;
 	}
-
+	
+//	public List<Sinister> findAllSinisterByProductName(String productName) {
+//		CriteriaBuilder builder = null;
+//		CriteriaQuery<Sinister> query = builder.createQuery(Sinister.class);
+//		Root<Sinister> fromSinister = query.from(Sinister.class);
+//		Join<Sinister, Contract> joinContract = fromSinister.join("contract");
+//		Join<Contract, InsuranceProduct> joinProduct = joinContract.join("product_insurance");
+//		List<Sinister> users = query.getResultType();
+//		
+//	}
+	@Override
+	public List<Sinister> getAllSinistersInProgressByProductName(String ff) {
+		String sql = "select f from Sinister f where f.product like '"+ff+"%'";
+		List<Sinister> emp = em.createQuery(sql, Sinister.class).getResultList();
+		return emp;
+	}
 }

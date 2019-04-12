@@ -39,14 +39,9 @@ public class Sinister implements Serializable {
 		
 		private float totalcost;
 		
-		public float getTotalcost() {
-			return totalcost;
-		}
+		private String product;
+		
 
-
-		public void setTotalcost(float totalcost) {
-			this.totalcost = totalcost;
-		}
 
 		@OneToMany(cascade = CascadeType.ALL, mappedBy="sinister")
 		private Set<Justification> justifications;
@@ -175,6 +170,24 @@ public class Sinister implements Serializable {
 
 		public void setSinisterState(SinisterState sinisterState) {
 			this.sinisterState = sinisterState;
+		}
+		public float getTotalcost() {
+			return totalcost;
+		}
+
+
+		public void setTotalcost(float totalcost) {
+			this.totalcost = totalcost;
+		}
+
+
+		public String getProduct() {
+			return product;
+		}
+
+
+		public void setProduct(String product) {
+			this.product = product;
 		}
 		
 		
