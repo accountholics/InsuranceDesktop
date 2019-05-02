@@ -1,6 +1,7 @@
 package tn.esprit.insurance.entity;
 
-public enum SplittingType {
-	monthly , biannual, quarterly ,spot
+public enum SplittingType 
+{
+	spot , three_months, six_months ,twelve_months 
 
 }

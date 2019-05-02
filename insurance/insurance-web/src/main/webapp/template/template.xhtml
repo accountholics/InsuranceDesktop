@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head></h:head>
+
+<title>#{page_name}</title>
+<meta charset="utf-8" content="" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link rel="apple-touch-icon" sizes="76x76"
+	href="../assets/img/apple-icon.png"></link>
+<link rel="icon" type="image/png" href="../assets/img/favicon.png"></link>
+
+<!--     Fonts and icons     -->
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800"
+	rel="stylesheet" />
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
+	rel="stylesheet" />
+<!-- Nucleo Icons -->
+<h:outputStylesheet library="css" name="nucleo-icons.css" />
+<h:outputStylesheet library="css" name="black-dashboard.css" />
+<h:outputStylesheet library="css" name="demo.css" />
+
+<!-- CSS Files -->
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<body>
+	<ui:include src="/template/header.xhtml" />
+	<ui:insert name="menu" />
+	<div class="wrapper">
+		<ui:insert name="content" />
+
+
+	</div>
+
+	<ui:include src="/template/footer.xhtml" />
+
+
+</body>
+
+<h:outputScript name="assets/js/core/jquery.min.js" />
+<h:outputScript name="assets/js/core/popper.min.js" />
+<h:outputScript name="assets/js/core/bootstrap.min.js" />
+<h:outputScript name="assets/js/plugins/perfect-scrollbar.jquery.min.js" />
+<!--  Google Maps Plugin    -->
+<!-- Place this tag in your head or just before your close body tag. -->
+<h:outputScript
+	name="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE" />
+<!-- Chart JS -->
+<h:outputScript name="../assets/js/plugins/chartjs.min.js" />
+<!--  Notifications Plugin    -->
+<h:outputScript name="assets/js/plugins/bootstrap-notify.js" />
+<!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
+<h:outputScript name="assets/js/black-dashboard.min.js?v=1.0.0" />
+<!-- Black Dashboard DEMO methods, don't include it in your project! -->
+<h:outputScript name="assets/demo/demo.js" />
+
+</html>

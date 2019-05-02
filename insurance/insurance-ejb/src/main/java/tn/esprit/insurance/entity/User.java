@@ -1,7 +1,6 @@
 package tn.esprit.insurance.entity;
 
 import java.io.Serializable;
-import java.lang.Enum;
 import java.lang.String;
 import java.sql.Date;
 import java.util.Set;
@@ -19,12 +18,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class User implements Serializable {
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private int id;
 
 	@Column(name = "cin")
-	private long cin;
+	private String cin;
+	
+	@Column(name = "phone_number")
+	private long phone_number;
 
 	@Column(name = "date_driver_license")
 	private Date date_driver_license;
@@ -37,53 +40,67 @@ public class User implements Serializable {
 
 	@Column(name = "last_name")
 	private String last_name;
-
+ 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "role")
-	private RoleType role;
+	private RoleType role ;
 
 	@Column(name = "password")
 	private String password;
 
 	@Column(name = "email")
-	private int email;
+	private String email;
 
 	@Column(name = "adress")
 	private String adress;
 
 	@Column(name = "state")
 	private String state;
-	
-	@Column(name = "seniority")
-	private boolean seniority ;
 
-	@OneToMany(mappedBy="client", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="client")
 	private Set<Contract> contracts;
+	
+	
+
+	
+
+	public Date getDate_driver_license() {
+		return date_driver_license;
+	}
+
+	public void setDate_driver_license(Date date_driver_license) {
+		this.date_driver_license = date_driver_license;
+	}
+
+	public String getExpertise_domain() {
+		return expertise_domain;
+	}
+
+	public void setExpertise_domain(String expertise_domain) {
+		this.expertise_domain = expertise_domain;
+	}
+
+
+
+	public Set<Contract> getContracts() {
+		return contracts;
+	}
+
+	public void setContracts(Set<Contract> contracts) {
+		this.contracts = contracts;
+	}
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	public String getAdress() {
 		return adress;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", cin=" + cin + ", first_name=" + first_name + ", last_name=" + last_name + ", role="
-				+ role + ", password=" + password + ", email=" + email + ", adress=" + adress + ", state=" + state
-				+ "]";
-	}
 
-	public User(int id, long cin, String first_name, String last_name, RoleType role, String password, int email,
-			String adress, String state) {
-		super();
-		this.id = id;
-		this.cin = cin;
-		this.first_name = first_name;
-		this.last_name = last_name;
-		this.role = role;
-		this.password = password;
-		this.email = email;
-		this.adress = adress;
-		this.state = state;
-	}
 
 	public void setAdress(String adress) {
 		this.adress = adress;
@@ -105,11 +122,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public int getEmail() {
+	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(int email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
@@ -127,11 +144,13 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public long getCin() {
-		return this.cin;
+
+
+	public String getCin() {
+		return cin;
 	}
 
-	public void setCin(long cin) {
+	public void setCin(String cin) {
 		this.cin = cin;
 	}
 
@@ -152,11 +171,21 @@ public class User implements Serializable {
 	}
 
 	public RoleType getRole() {
-		return this.role;
+		return role;
 	}
 
 	public void setRole(RoleType role) {
 		this.role = role;
 	}
+
+	public long getPhone_number() {
+		return phone_number;
+	}
+
+	public void setPhone_number(long phone_number) {
+		this.phone_number = phone_number;
+	}
+
+
 
 }

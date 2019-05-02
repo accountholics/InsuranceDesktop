@@ -120,7 +120,7 @@ public class SinisterService implements ISinisterLocal, ISinisterRemote {
 //	}
 	@Override
 	public List<Sinister> getAllSinistersInProgressByProductName(String ff) {
-		String sql = "select f from Sinister f where f.product like '"+ff+"%'";
+		String sql = "select f from Sinister f where f.sinisterState = 1 and f.product like '"+ff+"%'";
 		List<Sinister> emp = em.createQuery(sql, Sinister.class).getResultList();
 		return emp;
 	}
