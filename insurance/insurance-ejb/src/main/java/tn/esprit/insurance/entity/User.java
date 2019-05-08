@@ -60,9 +60,72 @@ public class User implements Serializable {
 	@OneToMany(mappedBy="client")
 	private Set<Contract> contracts;
 	
+	//added by wafa for scoring
+	private int age;
+	private int nbchildren;
+	private float salary;
+	private float ratioEndettement;
+	private String situationLogement;
+	private String etatPatrimonial;
+	private int dureeDernierEmploi;
+	
 	
 
-	
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public int getNbchildren() {
+		return nbchildren;
+	}
+
+	public void setNbchildren(int nbchildren) {
+		this.nbchildren = nbchildren;
+	}
+
+	public float getSalary() {
+		return salary;
+	}
+
+	public void setSalary(float salary) {
+		this.salary = salary;
+	}
+
+	public float getRatioEndettement() {
+		return ratioEndettement;
+	}
+
+	public void setRatioEndettement(float ratioEndettement) {
+		this.ratioEndettement = ratioEndettement;
+	}
+
+	public String getSituationLogement() {
+		return situationLogement;
+	}
+
+	public void setSituationLogement(String situationLogement) {
+		this.situationLogement = situationLogement;
+	}
+
+	public String getEtatPatrimonial() {
+		return etatPatrimonial;
+	}
+
+	public void setEtatPatrimonial(String etatPatrimonial) {
+		this.etatPatrimonial = etatPatrimonial;
+	}
+
+	public int getDureeDernierEmploi() {
+		return dureeDernierEmploi;
+	}
+
+	public void setDureeDernierEmploi(int dureeDernierEmploi) {
+		this.dureeDernierEmploi = dureeDernierEmploi;
+	}
 
 	public Date getDate_driver_license() {
 		return date_driver_license;
