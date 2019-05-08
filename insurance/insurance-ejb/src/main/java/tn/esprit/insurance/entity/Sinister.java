@@ -26,9 +26,6 @@ public class Sinister implements Serializable {
 		
 		private String sinisterDescription;
 		
-		@ManyToOne
-		private Contract contract;
-		
 		private Date declarationDate;
 		
 		private Date responseDate;
@@ -41,8 +38,10 @@ public class Sinister implements Serializable {
 		
 		private String product;
 		
-
-
+		
+		@ManyToOne
+		private Contract contract;
+		
 		@OneToMany(cascade = CascadeType.ALL, mappedBy="sinister")
 		private Set<Justification> justifications;
 
@@ -61,11 +60,36 @@ public class Sinister implements Serializable {
 		@OneToOne
 		private Assessment assessment;		
 		
+		
 		public Sinister() 
 		{
 		}
-		
-		
+				
+		public Sinister(String sinisterDescription/*, Contract contract*/, Date declarationDate/*, SinisterState sinisterState*/) {
+			this.sinisterDescription = sinisterDescription;
+			//this.contract = contract;
+			this.declarationDate = declarationDate;
+			//this.sinisterState = sinisterState;
+		}
+
+		public Sinister(String sinisterDescription /*,Contract contract*/, Date declarationDate, SinisterState sinisterState, String product) {
+			this.sinisterDescription = sinisterDescription;
+			//this.contract = contract;
+			this.declarationDate = declarationDate;
+			this.sinisterState = sinisterState;
+			this.product = product;
+		}
+
+		public Sinister(int sinisterId, String sinisterDescription, Contract contract, Date declarationDate, SinisterState sinisterState, String product) {
+			this.sinisterId = sinisterId;
+			this.sinisterDescription = sinisterDescription;
+			this.contract = contract;
+			this.declarationDate = declarationDate;
+			this.sinisterState = sinisterState;
+			this.product = product;
+		}
+
+
 		public Date getResponseDate() {
 			return responseDate;
 		}

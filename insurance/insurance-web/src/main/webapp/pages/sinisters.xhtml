@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/main-panel.xhtml">
+
+	<ui:define name="body">
+		<div class="card">
+			<div class="card-header">
+				<h1>Sinisters</h1>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive ps">
+					<h:panelGroup columns="2">
+						<h:form>
+							<h:dataTable class="table tablesorter " id="sinisters"
+								value="#{sinisterBean.sinisters}" var="s" border="1">
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Last Name" />
+									</f:facet>
+									<h:outputText value="#{s.contract.client.last_name}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="First Name" />
+									</f:facet>
+									<h:outputText value="#{s.contract.client.first_name}" />
+								</h:column>
+
+
+
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Description" />
+									</f:facet>
+									<h:outputText value="#{s.sinisterDescription}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Date" />
+									</f:facet>
+									<h:outputText value="#{s.declarationDate}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Total Cost" />
+									</f:facet>
+									<h:outputText value="#{s.totalcost}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Fraud Possibility" />
+									</f:facet>
+									<h:outputText value="" />
+								</h:column>
+								
+								
+							</h:dataTable>
+						</h:form>
+					</h:panelGroup>
+				</div>
+			</div>
+			<div class="card-footer pull-right">
+				<button class="btn btn-fill btn-primary pull-right">+</button>
+			</div>
+		</div>
+	</ui:define>
+
+</ui:composition>

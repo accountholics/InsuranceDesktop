@@ -1,25 +1,21 @@
 package tn.esprit.insurance.service.implementation;
 
 import java.util.List;
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
-import javax.persistence.criteria.Root;
-
 import tn.esprit.insurance.entity.Contract;
 import tn.esprit.insurance.entity.Expert;
 import tn.esprit.insurance.entity.InsuranceProduct;
 import tn.esprit.insurance.entity.Sinister;
 import tn.esprit.insurance.entity.SinisterState;
-import tn.esprit.insurance.service.interfaces.ISinisterLocal;
 import tn.esprit.insurance.service.interfaces.ISinisterRemote;
 
 @Stateless
-public class SinisterService implements ISinisterLocal, ISinisterRemote {
+@LocalBean
+public class SinisterService implements ISinisterRemote{
 
 	@PersistenceContext(unitName = "insurance-ejb")
 	EntityManager em;

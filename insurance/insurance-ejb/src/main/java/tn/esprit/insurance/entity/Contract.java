@@ -2,6 +2,7 @@ package tn.esprit.insurance.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -44,6 +45,9 @@ public class Contract implements Serializable {
 	private InsuranceProduct product_insurance;
 	@ManyToOne
 	private User client;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="contract")
+	private Set<Sinister> sinisters;
 
 	/* automobile */
 
@@ -293,6 +297,14 @@ public class Contract implements Serializable {
 
 	public void setCauseMicro(causeMicroC causeMicro) {
 		this.causeMicro = causeMicro;
+	}
+	
+	public Set<Sinister> getSinisters() {
+		return sinisters;
+	}
+
+	public void setSinisters(Set<Sinister> sinisters) {
+		this.sinisters = sinisters;
 	}
 
 
