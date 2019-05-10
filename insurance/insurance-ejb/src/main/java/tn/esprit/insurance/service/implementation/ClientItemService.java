@@ -2,17 +2,18 @@ package tn.esprit.insurance.service.implementation;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-
 import tn.esprit.insurance.entity.ClientItem;
-import tn.esprit.insurance.entity.Item;
 import tn.esprit.insurance.entity.Sinister;
+import tn.esprit.insurance.entity.User;
 import tn.esprit.insurance.service.interfaces.IClientItemRemote;
 
 @Stateless
+@LocalBean
 public class ClientItemService implements IClientItemRemote {
 	
 	@PersistenceContext(unitName = "insurance-ejb")
@@ -59,5 +60,7 @@ public class ClientItemService implements IClientItemRemote {
 		List<ClientItem> items = query.setParameter("sinister", s).getResultList();
 		return items;
 	}
+	
+
 
 }

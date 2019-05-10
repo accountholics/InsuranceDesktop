@@ -18,4 +18,6 @@ public interface ISinisterLocal {
 	public List<Sinister> findAllSinistersInProgress();
 	public List<Sinister> findAllSinisterByExpert(Expert expert);
 	public List<Sinister> getAllSinistersInProgressByProductName(String ff);
+	public List<Sinister> findDenied();
+	public List<Sinister> findAccepted();
 }

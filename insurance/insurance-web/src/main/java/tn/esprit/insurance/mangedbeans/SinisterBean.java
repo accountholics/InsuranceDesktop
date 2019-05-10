@@ -14,7 +14,7 @@ import tn.esprit.insurance.service.implementation.SinisterService;
 import tn.esprit.insurance.service.interfaces.ISinisterLocal;
 
 
-@ManagedBean
+@ManagedBean(name="sinisterBean")
 @SessionScoped
 public class SinisterBean implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -25,7 +25,7 @@ public class SinisterBean implements Serializable {
 	private SinisterState sinisterState;
 	private String observation;
 	private float totalcost;
-	private String product;
+	private String product = "Vehicule";
 	
 	@EJB
 	SinisterService ss;
@@ -38,18 +38,37 @@ public class SinisterBean implements Serializable {
 	public SinisterBean() {
 	}
 
-//	public void addSinister() {
-//		ss.addSinister(new Sinister(sinisterDescription, new Date()));
-//	}
+	public void addSinister() {
+//		Sinister s = new Sinister(sinisterDescription,new Date(),SinisterState.notification ,product);
+		Sinister s = new Sinister(sinisterDescription, new Date(),SinisterState.notification ,product);
+		ss.addSinister(s);
+	}
 	
 	private List<Sinister> sinisters;
+	private List<Sinister> sinistersAccepted;
+	private List<Sinister> sinistersDenied;
+	
 	
 	public List<Sinister> getSinisters() {
 		sinisters = ss.findAllSinisters();
 		return sinisters;
 	}
 	
+	public List<Sinister> nbsinisters() {
+		sinisters = ss.findAllSinisters();
+		return sinisters;
+	}
+	
+	public List<Sinister> accepted(){
+		sinistersAccepted = ss.findAccepted();
+		return sinistersAccepted;
+	}
 
+	public List<Sinister> denied(){
+		sinistersDenied = ss.findDenied();
+		return sinistersDenied;
+		
+	}
 	public String getSinisterDescription() {
 		return sinisterDescription;
 	}

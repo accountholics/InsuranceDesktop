@@ -3,6 +3,7 @@ package tn.esprit.insurance.service.interfaces;
 import java.util.List;
 import tn.esprit.insurance.entity.ClientItem;
 import tn.esprit.insurance.entity.Sinister;
+import tn.esprit.insurance.entity.User;
 
 public interface IClientItemRemote {
 	public int addClientItem(ClientItem item);
@@ -11,5 +12,7 @@ public interface IClientItemRemote {
 	public ClientItem findClientItemById(int id);
 	public List<ClientItem> findAllClientItems();
 	public List<ClientItem> findAllClientItemsBySinister(Sinister s);
+	
+
 
 }

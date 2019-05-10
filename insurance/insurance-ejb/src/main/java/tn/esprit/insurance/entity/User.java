@@ -69,7 +69,16 @@ public class User implements Serializable {
 	private String etatPatrimonial;
 	private int dureeDernierEmploi;
 	
+	private int score;
 	
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
 
 	public int getAge() {
 		return age;

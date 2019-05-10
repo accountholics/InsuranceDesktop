@@ -4,9 +4,56 @@
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/include/template.xhtml">
+
+
+	<script type="text/javascript">
+    PrimeFaces.locales['es'] = {
+        closeText: 'Cerrar',
+        prevText: 'Anterior',
+        nextText: 'Siguiente',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+        dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+        weekHeader: 'Semana',
+        firstDayOfWeek: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: '',
+        timeOnlyTitle: 'Sólo hora',
+        timeText: 'Tiempo',
+        hourText: 'Hora',
+        minuteText: 'Minuto',
+        secondText: 'Segundo',
+        currentText: 'Fecha actual',
+        ampm: false,
+        month: 'Mes',
+        week: 'Semana',
+        day: 'Día',
+        allDayText: 'Todo el día'
+    };
+</script>
+
+	<script type="text/javascript">
+    //<![CDATA[
+    function dateTemplateFunc(date) {
+        return '<span style="background-color:' + ((date.day < 21 && date.day > 10) ? '#81C784' : 'inherit') + ';border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">' + date.day + '</span>';
+    }
+    //]]>
+</script>
+
+	<style type="text/css">
+.value {
+	font-weight: bold;
+}
+</style>
+
+
 
 	<ui:define name="content">
 		<section id="call-to-action">
@@ -15,12 +62,10 @@
 				<div class="col-md-12">
 					<div class="block">
 						<h2 class="title wow fadeInDown">Welcome to Insurify</h2>
-						<p class="wow fadeInDown" data-wow-delay=".5s"
-							data-wow-duration="500ms">Advance safely.</p>
+						<p class="wow fadeInDown">Advance safely.</p>
 						<a href="contact.html"
-							class="btn btn-default btn-contact wow fadeInDown"
-							data-wow-delay=".7s" data-wow-duration="500ms">Contact us if
-							you need help </a>
+							class="btn btn-default btn-contact wow fadeInDown">Contact us
+							if you need help </a>
 					</div>
 				</div>
 
@@ -34,104 +79,49 @@
 				<h2>Report a sinister</h2>
 			</h:form>
 
-			<center>
+			<h2>Tell us what happened</h2>
+			<p class="subtitle-des wow fadeInDown animated"
+				style="visibility: visible; animation-duration: 500ms; animation-delay: 0.5s; animation-name: fadeInDown;">
+				Please add all the infos you have</p>
 
-				<div class="col-md-6">
-					<div class="block">
-						<h2 class="subtitle wow fadeInDown animated"
-							data-wow-duration="500ms" data-wow-delay=".3s"
-							style="visibility: visible; animation-duration: 500ms; animation-delay: 0.3s; animation-name: fadeInDown;">Tell
-							us what happened</h2>
-						<p class="subtitle-des wow fadeInDown animated"
-							data-wow-duration="500ms" data-wow-delay=".5s"
-							style="visibility: visible; animation-duration: 500ms; animation-delay: 0.5s; animation-name: fadeInDown;">
-							Please add all the infos you have</p>
-						<div class="contact-form">
-							<form id="contact-form" method="#" action="#" role="form"
-								novalidate="novalidate">
-								<div class="col-md-12">
-									<h6>Insurance Contract</h6>
-									<div class="form-group wow fadeInDown animated"
-										data-wow-duration="500ms" data-wow-delay=".6s"
-										style="visibility: visible; animation-duration: 500ms; animation-delay: 0.6s; animation-name: fadeInDown;">
-										<p>518Ref58514</p>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<h6>Related Product</h6>
-									<div class="form-group wow fadeInDown animated"
-										data-wow-duration="500ms" data-wow-delay=".8s"
-										style="visibility: visible; animation-duration: 500ms; animation-delay: 0.8s; animation-name: fadeInDown;">
-										<h:selectOneMenu id="combo" value="">
-											<f:selectItem itemValue="1" itemLabel="Vehicule" />
-											<f:selectItem itemValue="2" itemLabel="Housing" />
-											<f:selectItem itemValue="3" itemLabel="Agricultural" />
-										</h:selectOneMenu>
-									</div>
-								</div>
+			<h:form >
 
-								<div class="col-md-12">
-									<p class="subtitle-des wow fadeInDown animated"
-										data-wow-duration="500ms" data-wow-delay=".5s"
-										style="visibility: visible; animation-duration: 500ms; animation-delay: 0.5s; animation-name: fadeInDown;">
-										Provide us with the sinister details</p>
-								</div>
-								<div class="col-md-12">
-									<h6>Type of sinister</h6>
-									<div>
-										<h:selectOneMenu id="combo2" value="">
-											<f:selectItem itemValue="1" itemLabel="Accident" />
-											<f:selectItem itemValue="2" itemLabel="Robbery" />
-											<f:selectItem itemValue="3" itemLabel="Fire" />
-										</h:selectOneMenu>
-									</div>
-
-
-								</div>
-
-								<div class="col-md-12">
-									<h6>Affected Components</h6>
-									<h:selectManyCheckbox value="#{user.favNumber1}">
-										<f:selectItem itemValue="1" itemLabel="Engine" />
-										<f:selectItem itemValue="2" itemLabel="Axle" />
-										<f:selectItem itemValue="3" itemLabel="Brakes" />
-										<f:selectItem itemValue="3" itemLabel="Radiator" />
-										<f:selectItem itemValue="3" itemLabel="AC Compressor" />
-										<f:selectItem itemValue="3" itemLabel="Schock Absorber" />
-									</h:selectManyCheckbox>
-
-
-								</div>
-
-
-								<div class="form-group wow fadeInDown animated"
-									data-wow-duration="500ms" data-wow-delay="1s"
-									style="visibility: visible; animation-name: fadeInDown;">
-									<input type="text" placeholder="Was there any witness ?"
-										class="form-control" name="subject" id="subject" />
-								</div>
-
-								<div class="form-group wow fadeInDown animated"
-									data-wow-duration="500ms" data-wow-delay="1.2s"
-									style="visibility: visible; animation-name: fadeInDown;">
-									<textarea rows="6" placeholder="Want to add something else ?"
-										class="form-control" name="message" id="message"></textarea>
-								</div>
-
-
-
-								<div id="submit" class="wow fadeInDown animated"
-									data-wow-duration="500ms" data-wow-delay="1.4s"
-									style="visibility: visible; animation-name: fadeInDown;">
-									<input type="submit" id="contact-submit"
-										class="btn btn-default btn-send" value="Send Notification" />
-								</div>
-							</form>
-						</div>
-					</div>
+				<div class="col-md-12">
+					<h3>Type of Sinister</h3>
+					<h:inputText type="text" placeholder="Accident, Fire, Robbery..."
+						class="form-control" value="#{sinisterBean.sinisterDescription}"></h:inputText>
 				</div>
-			</center>
+				<div class="clearfix"></div>
+				<div class="col-md-12">
+					<h3>Description</h3>
+					<h:inputText type="text" placeholder="Accident, Fire, Robbery..."
+						class="form-control" value="#{sinisterBean.observation}"></h:inputText>
+				</div>
+
+				<div class="clearfix"></div>
+
+
+				<div class="col-md-12">
+					<h3>Repair Estimation</h3>
+					<h:inputText type="text" placeholder="Accident, Fire, Robbery..."
+						class="form-control" value="#{sinisterBean.totalcost}"></h:inputText>
+				</div>
+				
+				
+				<div class="col-md-12">
+					<h:commandButton value="Send Notification"
+						action="#{sinisterBean.addSinister()}"
+						class="btn btn-default btn-contact wow fadeInDown" />
+				</div>
+
+			</h:form>
+
 		</center>
+
+
+
+
+
 	</ui:define>
 
 

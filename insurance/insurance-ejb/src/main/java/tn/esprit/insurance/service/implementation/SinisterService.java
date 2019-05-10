@@ -71,6 +71,20 @@ public class SinisterService implements ISinisterRemote{
 	}
 	
 	@Override
+	public List<Sinister> findAccepted() {
+		TypedQuery<Sinister> query = em.createQuery("SELECT u FROM Sinister u WHERE u.decision = :d",Sinister.class);			
+		List<Sinister> users = query.setParameter("d", "Accepted").getResultList();
+		return users;
+	}
+	
+	@Override
+	public List<Sinister> findDenied() {
+		TypedQuery<Sinister> query = em.createQuery("SELECT u FROM Sinister u WHERE u.decision = :d",Sinister.class);			
+		List<Sinister> users = query.setParameter("d", "Denied").getResultList();
+		return users;
+	}
+	
+	@Override
 	public List<Sinister> findAllSinisterNotifications() {
 		System.out.println("SinisterNotifications ");
 		TypedQuery<Sinister> query = em.createQuery("SELECT u FROM Sinister u WHERE u.sinisterState = :sinisterstate",Sinister.class);			

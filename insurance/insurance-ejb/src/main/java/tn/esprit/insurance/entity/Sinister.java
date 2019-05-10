@@ -1,7 +1,7 @@
 package tn.esprit.insurance.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -37,6 +37,8 @@ public class Sinister implements Serializable {
 		private float totalcost;
 		
 		private String product;
+		
+		private String decision;
 		
 		
 		@ManyToOne
@@ -212,6 +214,14 @@ public class Sinister implements Serializable {
 
 		public void setProduct(String product) {
 			this.product = product;
+		}
+
+		public String getDecision() {
+			return decision;
+		}
+
+		public void setDecision(String decision) {
+			this.decision = decision;
 		}
 		
 		

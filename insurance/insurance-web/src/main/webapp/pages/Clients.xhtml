@@ -5,65 +5,72 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	template="/template/main-panel.xhtml">
 
 	<ui:define name="body">
-	
-
 		<div class="card">
 			<div class="card-header">
-				<h1>Sinisters</h1>
+				<h1>Clients Profiles</h1>
 			</div>
 			<div class="card-body">
 				<div class="table-responsive ps">
 					<h:panelGroup columns="2">
 						<h:form>
 							<h:dataTable class="table tablesorter " id="sinisters"
-								value="#{sinisterBean.sinisters}" var="s" border="1">
+								value="#{userBean.users}" var="s" border="1">
 								<h:column>
 									<f:facet name="header">
 										<h:outputText value="Last Name" />
 									</f:facet>
-									<h:outputText value="#{s.contract.client.last_name}" />
+									<h:outputText value="#{s.last_name}" />
 								</h:column>
 
 								<h:column>
 									<f:facet name="header">
 										<h:outputText value="First Name" />
 									</f:facet>
-									<h:outputText value="#{s.contract.client.first_name}" />
+									<h:outputText value="#{s.first_name}" />
 								</h:column>
 
 
 
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Description" />
+										<h:outputText value="Age" />
 									</f:facet>
-									<h:outputText value="#{s.sinisterDescription}" />
+									<h:outputText value="#{s.age}" />
 								</h:column>
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Date" />
+										<h:outputText value="In current job since" />
 									</f:facet>
-									<h:outputText value="#{s.declarationDate}" />
+									<h:outputText value="#{s.dureeDernierEmploi}" />
 								</h:column>
 
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Total Cost" />
+										<h:outputText value="Family Status" />
 									</f:facet>
-									<h:outputText value="#{s.totalcost}" />
+									<h:outputText value="#{s.etatPatrimonial}" />
 								</h:column>
 
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Fraud Possibility" />
+										<h:outputText value="Score" />
 									</f:facet>
-									<h:outputText value="" />
+									<h:outputText value="#{s.score}" />
 								</h:column>
-								
-								
+
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Good Insured ?" />
+									</f:facet>
+									<if>#{s.score gt 60}</if>
+
+								</h:column>
+
+
 							</h:dataTable>
 						</h:form>
 					</h:panelGroup>
@@ -73,8 +80,6 @@
 				<button class="btn btn-fill btn-primary pull-right">+</button>
 			</div>
 		</div>
-		
-
 	</ui:define>
 
 </ui:composition>
